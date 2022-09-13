@@ -11,14 +11,11 @@ namespace QuizStudio
             QuestionText = questionText;
             Points = points;
         }
-        public abstract void DisplayQuestion();//displays the questions
 
         public abstract void DisplayAnswerChoices();//displays the possible answers
 
-        public abstract GetUsersAnswers()
-        {
-
-        }
+        public abstract int GetUsersAnswers();
+        
     }
     
 }
