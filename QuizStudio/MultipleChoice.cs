@@ -6,18 +6,18 @@ namespace QuizStudio
         public List<string> PossibleAnswers { get; set; }
         public int CorrectAnswer { get; set; }
 
-        public MultipleChoice(string questionText, List<string> possibleAnswers, int correctAnswer, int points) : base(questionText, points)
+        public MultipleChoice(string text, List<string> possibleAnswers, int correctAnswer, int pointValue) : base(questionText, pointValue)
         {
             CorrectAnswer = correctAnswer;
             PossibleAnswers = possibleAnswers;
-            Points = 1;
+            PointValue = 1;
         }
 
         public override void DisplayAnswerChoices()
         {
-            foreach (string answer in PossibleAnswers)
+            for (int i = 0; i < PossibleAnswers.Count; i++)
             {
-                Console.WriteLine(answer);
+                Console.WriteLine(PossibleAnswers[i]);
             }
         }
 
@@ -35,7 +35,7 @@ namespace QuizStudio
 
         public override int GetUsersAnswers()
         {
-            Console.WriteLine("Please enter the correct answer's corresponding number: ");
+            Console.WriteLine("Please enter the correct answer's corresponding number. For example, to select the first option, enter 1.\n");
             string userAnswer = Console.ReadLine();
             int userAnswerNumber = int.Parse(userAnswer);
 

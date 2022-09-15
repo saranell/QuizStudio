@@ -5,36 +5,45 @@ namespace QuizStudio
     {
         public List<Question> Questions { get; set; }
         public int Score { get; set; }
-        private int InitialPoints { get; set; }
+        private int Total { get; set; }
 
 
         public Quiz(List<Question> questions)
         {
             Questions = questions;
-            InitialPoints = 0;
+            Total = 0;
             Score = 0;
 
             for (int i = 0; i < questions.Count; i++)
             {
-                InitialPoints += questions[i].Points;
+                Total += questions[i].PointValue;
             }
         }
 
-        public void AddQuestion(Question question)
+        public void AddQuestion(Question newQuestion)
         {
-            Questions.Add(question);
-            InitialPoints += question.Points;
+            Questions.Add(newQuestion);
+            Total += newQuestion.PointValue;
         }
 
         public void RunQuiz()
         {
-            foreach(Question question in Questions)
+            for (int i = 0; i < Questions.Count; i++)
             {
-                Console.WriteLine(question.QuestionText);
-                question.DisplayAnswerChoices();
-                question.GetUsersAnswers();
-
+                Questions[i].DisplayAnswerChoices();
+                Questions[i].GetUsersAnswers();
+                int pts = Questions[i].GetUsersAnswers();
+                UpdateScore(pts);
             }
+        }
+        public void UpdateScore(int x)
+        {
+            Score += x;
+        }
+
+        public void GradeQuiz()
+        {
+            Console.WriteLine("Your score is: " + Score + "/" + Total);
         }
     }
 }

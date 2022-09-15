@@ -4,15 +4,15 @@ namespace QuizStudio
     public abstract class Question
     {
         public string QuestionText { get; set; }
-        public int Points { get; set; }
+        public int PointValue { get; set; }
 
-        public Question(string questionText, int points)
+        public Question(string questionText, int pointValue)
         {
             QuestionText = questionText;
-            Points = points;
+            PointValue = pointValue;
         }
 
-        public abstract void DisplayAnswerChoices();//displays the possible answers
+        public abstract void DisplayAnswerChoices();
 
         public abstract int GetUsersAnswers();
         
