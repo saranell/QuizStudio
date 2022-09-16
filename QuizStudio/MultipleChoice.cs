@@ -6,7 +6,7 @@ namespace QuizStudio
         public List<string> PossibleAnswers { get; set; }
         public int CorrectAnswer { get; set; }
 
-        public MultipleChoice(string text, List<string> possibleAnswers, int correctAnswer, int pointValue) : base(questionText, pointValue)
+        public MultipleChoice(string questionText, List<string> possibleAnswers, int correctAnswer, int pointValue) : base(questionText, pointValue)
         {
             CorrectAnswer = correctAnswer;
             PossibleAnswers = possibleAnswers;
